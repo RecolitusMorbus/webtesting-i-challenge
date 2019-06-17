@@ -12,5 +12,8 @@
   },
   "devDependencies": {
     "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "node": "^12.4.0"
   }
 }

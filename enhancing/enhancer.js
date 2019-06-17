@@ -10,7 +10,7 @@ function succeed(item) {
     const itemSuccess = {
       name: item.name,
       durability: item.durability,
-      enhancement: item.enhancement
+      enhancement: item.enhancement + 1
     };
     return itemSuccess;
   } else {
@@ -27,12 +27,12 @@ function fail(item) {
     };
     return itemFail;
   } else if (item.enhancement === 15 || item.enhancement === 16) {
-    const enhancFail = {
+    const enhanceFail = {
       name: item.name,
       durability: item.durability - 10,
       enhancement: item.enhancement
     };
-    return enhancFail;
+    return enhanceFail;
   } else if (item.enhancement > 16) {
     const critFail = {
       name: item.name,
@@ -44,9 +44,23 @@ function fail(item) {
 };
 
 function repair(item) {
-  return { ...item, durability: 100 };
+  const repairedItem = {
+    name: item.name,
+    durability: 100,
+    enhancement: item.enhancement
+  };
+  return repairedItem;
 }
 
 function get(item) {
-  return { ...item };
-}
+  if (item.enhancement === 0) {
+    return item;
+  } else {
+    const itemStat = {
+      name: `[+${item.enhancement}]` + item.name,
+      durability: item.durability,
+      enhancement: item.enhancement
+    };
+    return itemStat;
+  };
+};
