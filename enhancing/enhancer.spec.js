@@ -91,4 +91,20 @@ describe('enhancer.js', () => {
       expect(repairedItem).toEqual(expected);
     });
   });
+  describe('get()', () => {
+    it('Adds positive enhancement modifier to item.', () => {
+      const item = {
+        name: 'Mythril Toothpick',
+        durability: 100,
+        enhancement: 20
+      };
+      const expected = {
+        name: '[+20]Mythril Toothpick',
+        durability: 100,
+        enhancement: 20
+      };
+      const itemStat = get(item);
+      expect(itemStat).toEqual(expected);
+    });
+  });
 });
